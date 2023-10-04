@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Navbar from "../Shared/Navbar/Navbar";
 import { useContext } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
@@ -6,6 +6,7 @@ import { AuthContext } from "../../providers/AuthProvider";
 
 const Login = () => {
     const {login} = useContext(AuthContext);
+    const location = useLocation();
     const navigate = useNavigate();
 
     const handleLogin = e =>{
@@ -21,7 +22,8 @@ const Login = () => {
         .then(res=>{
             console.log(res.user);
             alert('User Login Successful')
-            navigate('/');
+            // Navigate After Login
+            navigate(location?.state ? location.state : '/');   //location.state thakle location.state a jabe.na thakle home page a chole jabe
         })
         .catch(error=>console.error(error))
     }
