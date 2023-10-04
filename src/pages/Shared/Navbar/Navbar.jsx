@@ -47,7 +47,7 @@ const Navbar = () => {
                 {
                     user ? <div>
                         {user.email}
-                        <Link className="ml-2" onClick={handleLogOut}>Logout</Link>
+                        <Link className="ml-2 btn" onClick={handleLogOut}>Logout</Link>
                         </div>
                             :
                             <Link to="/login">
